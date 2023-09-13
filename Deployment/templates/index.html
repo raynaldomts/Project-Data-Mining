@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+            rel="stylesheet"
+        />
+        <style>
+            select, input {
+              
+                width:300px;
+            }
+            </style>
+        <title>Fraud Detection Kelompok 1</title>
+    </head>
+    <body
+        class="
+            flex flex-col
+            justify-between
+            item-center
+            p-8
+            min-h-screen
+            bg-blue-500
+            text-gray-800
+            md:flex-row
+        "
+    >
+        <main class="bg-white p-16 rounded-lg">
+            <h1 class="text-3xl font-bold mb-8">
+                BPJS FRAUD DETECTION
+            </h1>
+
+            <form
+                action="{{ url_for('predict') }}"
+                method="post"
+                class="flex flex-col"
+            >
+                
+                <div class="form-group row">          
+                    <label for="typeppk" class="col-sm-2 col-form-label">typeppk:</label>
+                        <div  class="col-sm-5">
+                            <select id="typeppk" name="typeppk"class="p-4 bg-gray-100 rounded-md">
+                                <option value="none"></option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                                <option value="GD">GD</option>
+                                <option value="HD">HD</option>
+                                <option value="I1">I1</option>
+                                <option value="I2">I2</option>
+                                <option value="I3">I3</option>
+                                <option value="I4">I4</option>
+                                <option value="KB">KB</option>
+                                <option value="KC">KC</option>
+                                <option value="KG">KG</option>
+                                <option value="KI">KI</option>
+                                <option value="KJ">KJ</option>
+                                <option value="KL">KL</option>
+                                <option value="KM">KM</option>
+                                <option value="KO">KO</option>
+                                <option value="KP">KP</option>
+                                <option value="KT">KT</option>
+                                <option value="KU">KU</option>
+                                <option value="SA">SA</option>
+                                <option value="SB">SB</option>
+                                <option value="SC">SC</option>
+                                <option value="SD">SD</option>
+                            </select>
+                        </div>
+                </div>
+                <div class="form-group row">          
+                    <label for="cmg_type" class="col-sm-2 col-form-label">cmg:</label>
+                        <div class="col-sm-5">
+                            <select id="cmg_type" name="cmg" class="p-4 bg-gray-100 rounded-md">
+                                <option value="none"></option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                                <option value="E">E</option>
+                                <option value="F">F</option>
+                                <option value="G">G</option>
+                                <option value="H">H</option>
+                                <option value="I">I</option>
+                                <option value="J">J</option>
+                                <option value="K">K</option>
+                                <option value="L">L</option>
+                                <option value="M">M</option>
+                                <option value="N">N</option>
+                                <option value="O">O</option>
+                                <option value="P">P</option>
+                                <option value="Q">Q</option>
+                                <option value="S">S</option>
+                                <option value="T">T</option>
+                                <option value="U">U</option>
+                                <option value="V">V</option>
+                                <option value="W">W</option>
+                                <option value="Z">Z</option>
+                            </select>
+                        </div>
+                </div>
+                <div class="form-group row">          
+                    <label for="diagprimer_type" class="col-sm-2 col-form-label">diagprimer:</label>
+                        <div class="col-sm-5">
+                            <select id="diagprimer_type" name="diagprimer" class="p-4 bg-gray-100 rounded-md">
+                                <option value="none"></option>
+                                <option value="diagprimer_a00_b99">a00_b99</option>
+                                <option value="diagprimer_c00_d48">c00_d48</option>
+                                <option value="diagprimer_d50_d89">d50_d89</option>
+                                <option value="diagprimer_e00_e90">e00_e90</option>
+                                <option value="diagprimer_f00_f99">f00_f99</option>
+                                <option value="diagprimer_g00_g99">g00_g99</option>
+                                <option value="diagprimer_h00_h59">h00_h59</option>
+                                <option value="diagprimer_h60_h95">h60_h95</option>
+                                <option value="diagprimer_i00_i99">i00_i99</option>
+                                <option value="diagprimer_j00_j99">j00_j99</option>
+                                <option value="diagprimer_k00_k93">k00_k93</option>
+                                <option value="diagprimer_l00_l99">l00_l99</option>
+                                <option value="diagprimer_m00_m99">m00_m99</option>
+                                <option value="diagprimer_n00_n99">n00_n99</option>
+                                <option value="diagprimer_o00_o99">o00_o99</option>
+                                <option value="diagprimer_p00_p96">p00_p96</option>
+                                <option value="diagprimer_q00_q99">q00_q99</option>
+                                <option value="diagprimer_r00_r99">r00_r99</option>
+                                <option value="diagprimer_s00_s98">s00_s98</option>
+                                <option value="diagprimer_u00_u85">u00_u85</option>
+                                <option value="diagprimer_z00_z99">z00_z99</option>
+                            </select>
+                        </div>
+                </div>
+                <div class="form-group row">          
+                    <label for="umur" class="col-sm-2 col-form-label">umur:</label>
+                        <div class="col-sm-5">
+                            <select id="umur_type" name="umur" class="p-4 bg-gray-100 rounded-md">
+                                <option value="none"></option>
+                                <option value="satu">satu</option>
+                                <option value="dua">dua</option>
+                                <option value="tiga">tiga</option>
+                                <option value="empat">empat</option>
+                                <option value="lima">lima</option>
+                            </select>
+                        </div>
+                </div>
+                <div class="form-group row">          
+                    <label for="los" class="col-sm-2 col-form-label">los:</label>
+                        <div class="col-sm-5">
+                            <select id="los_type" name="los"class="p-4 bg-gray-100 rounded-md">
+                                <option value="none"></option>
+                                <option value="los_rawat_jalan">rawat jalan</option>
+                                <option value="los_short_stay">short stay</option>
+                                <option value="los_medium_stay">medium stay</option>
+                                <option value="los_long_stay">long stay</option>
+                            </select>
+                        </div>
+                </div>
+                <div class="form-group row">          
+                    <label for="kdkc" class="col-sm-2 col-form-label">kdkc:</label>
+                        <div class="col-sm-5">
+                            <input name="kdkc" type="integer" id="kdkc" required="required"
+                            class="p-4 bg-gray-100 rounded-md"
+                            placeholder="Masukkan nilai kdkc">
+                          </div>
+                </div>
+        
+                <div class="form-group row">          
+                    <label for="jkpst" class="col-sm-2 col-form-label">jkpst:</label>
+                        <div class="col-sm-5">
+                            <select id="jkpst" name="jkpst"class="p-4 bg-gray-100 rounded-md" required="required">
+                                <option value="none"></option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                            </select>
+                        </div>
+                </div>
+                
+                <div class="form-group row">          
+                    <label for="jnspelsep" class="col-sm-2 col-form-label">jnspelsep:</label>
+                        <div class="col-sm-5">
+                            <select id="jnspelsep" name="jnspelsep"class="p-4 bg-gray-100 rounded-md">
+                                <option value="none"></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </div>
+                </div>
+                <div class="form-group row">          
+                    <label for="severitylevel" class="mt-4 mb-2" >severitylevel:</label>
+                        <div class="col-sm-5">
+                            <select id="severitylevel" name="severity level"class="p-4 bg-gray-100 rounded-md" >
+                                <option value="none"></option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                </div>
+                <button
+                    type="submit"
+                    class="
+                        flex
+                        <!-- justify-center -->
+                        <!-- align-center -->
+                        mt-10
+                        p-6
+                        bg-blue-500
+                        text-white
+                        rounded-md
+                    "
+                >
+                    PREDIKSI SEKARANG
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="stroke-red-500"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-arrow-right ml-4"
+                    >
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            
+              </form>
+        </main>
+        <section class="mt-8 h-full flex-auto rounded-lg md:mt-0 md:ml-8">
+            <div class="bg-white p-16 rounded-lg">
+                <h1 class="text-2xl mb-8">
+                    HASIL 
+                </h1>
+                <h2 class="text-5xl font-bold"> FRAUD/TIDAK FRAUD</h2>
+            </div>
+        </section>
+    </body>
+</html>
